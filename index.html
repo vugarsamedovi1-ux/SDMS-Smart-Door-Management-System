@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="GE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SDMS – ჭკვიანი კარის მართვის სისტემა: IoT-ზე დაფუძნებული უსაფრთხო და ინტელექტუალური კარის კონტროლის გადაწყვეტა**
+">
+    <meta name="keywords" content="SDMS, ჭკვიანი კარი, IoT, ESP32, ჭკვიანი კარის სისტემა, უსაფრთხოების სისტემა">
+    <meta name="author" content="ვუგარ სამედოვი, ელჯუნ ხასიევი">
+    <title>SDMS - Smart Door Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">🔐</span>
+                    <span class="logo-text">SDMS</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">მთავარი გვერდი</a></li>
+                    <li><a href="#about" class="nav-link">შესახებ</a></li>
+                    <li><a href="#features" class="nav-link">ფუნქციები</a></li>
+                    <li><a href="#architecture" class="nav-link">არქიტექტურა</a></li>
+                    <li><a href="#diagrams" class="nav-link">ნახაზები</a></li>
+                    <li><a href="#components" class="nav-link">კომპონენტები</a></li>
+                    <li><a href="#team" class="nav-link">გუნდი</a></li>
+                    <li><a href="#github" class="nav-link github-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                        </svg>
+                        GitHub
+                    </a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    IoT-ზე დაფუძნებული უსაფრთხოების გადაწყვეტა
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">SDMS</span><br>
+                    Smart Door Management System
+                </h1>
+                <p class="hero-subtitle">
+                    ჭკვიანი კარის მართვის სისტემა – ESP32-ზე დაფუძნებული, IoT-ის მხარდაჭერით, უსაფრთხო და მომხმარებელზე ორიენტირებული კარის კონტროლის სისტემა
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+                        </svg>
+                        ფუნქციების აღმოჩენა
+                    </a>
+                    <a href="https://github.com/vugarsamedovi1-ux/SDMS-Smart-Door-Management-System" target="_blank" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                        </svg>
+                        GitHub რეპოზიტორი
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">ESP32</div>
+                        <div class="stat-label">მიკროკონტროლერი</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Wi-Fi</div>
+                        <div class="stat-label">IoT კავშირი</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">Blynk</div>
+                        <div class="stat-label">Mobil კონტროლი</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value"> 24/7 </div>
+                        <div class="stat-label">უსაფრთხოება</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text">Scroll Down</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">პროექტის შესახებ</span>
+                <h2 class="section-title">რა არის SDMS?</h2>
+                <p class="section-description">
+                    მოდერნულ ცხოვრებაში კარის უსაფრთხოება კრიტიკული მნიშვნელობისაა. SDMS წარმოადგენს ამ საჭიროებისადმი ჭკვიან, ხელმისაწვდომ და მომხმარებელისთვის მეგობრულ გადაწყვეტილებას.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>🎯 პროექტის მიზანი</h3>
+                        <p>
+                            SDMS (Smart Door Management System) არის IoT-ზე დაფუძნებული ჭკვიანი კარის მართვის სისტემა, რომელიც შექმნილია საცხოვრებელ და სამუშაო სივრცეებში კარის უსაფრთხოების გასაუმჯობესებლად. სისტემაში გამოიყენება ESP32 მიკროკონტროლერი, სერვო ძრავა, Reed სენსორი და Blynk მობილური აპლიკაცია, რაც უზრუნველყოფს კარის რეალურ დროში კონტროლს და უსაფრთხოების შეტყობინებებს.
+                        </p>
+                        
+                        <h3>⚠️ არსებული პრობლემები</h3>
+                        <ul class="problem-list">
+                            <li>კარების შემთხვევითი გახსნილობა</li>
+                            <li>ღამის საათებში უსაფრთხოების რისკები</li>
+                            <li>უფლებამოსილი შეღწევის და ქურდობის საფრთხეები</li>
+                            <li>არსებული სისტემების მაღალი ღირებულება</li>
+                            <li>გართულებული ინსტალაცია და კონფიგურაცია</li>
+                        </ul>
+
+                        <h3>✅ SDMS-ის გადაწყვეტა</h3>
+                        <ul class="solution-list">
+                            <li>კარის მდგომარეობის რეალურ დროში მონიტორინგი</li>
+                            <li>ავტომატური რეაგირების და გაფრთხილების სისტემა</li>
+                            <li>მობილური აპლიკაციის საშუალებით დისტანციური კონტროლი</li>
+                            <li>ნაკლები ღირებულება და მარტივი ინსტალაცია</li>
+                            <li>მოდულური და გაფართოებადი არქიტექტურა</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="images/sdms_image_1.jpeg" alt="SDMS Logo" class="main-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h4>ილიას სახელმწიფო უნივერსიტეტი</h4>
+                                <p> ბიზნესის, ტექნოლოგიებისა და განათლების ფაკულტეტი <br> კომპიუტერული ინჟინერიის საბაკალავრო პროგრამა <br> დამამთავრებელი კურსის დიზაინის პროექტი A </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ფუნქციები</span>
+                <h2 class="section-title">სისტემის ფუნქციები</h2>
+                <p class="section-description">
+                    SDMS სთავაზობს ფართო უსაფრთხოების გადაწყვეტილებას, თანამედროვე IoT ტექნოლოგიების და ჭკვიანი სენსორების გამოყენებით.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>რეალურ დროში მონიტორინგი</h3>
+                    <p>Reed სენსორი განსაზღვრავს კარის მდგომარეობას რეალურ დროში და აწვდის ინფორმაციას მობილური აპლიკაციისთვის Wi-Fi-ის საშუალებით.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a5 5 0 100 10 5 5 0 000-10zM12 14c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h3>მობილური კონტროლი</h3>
+                    <p>Blynk აპლიკაციის საშუალებით შეგიძლიათ მსოფლიოს ნებისმიერი წერტილიდან აკონტროლოთ და ჩაკეტოთ თქვენი კარი.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>უსაფრთხოების გაფრთხილებები</h3>
+                    <p>კარის ძალით გახსნის ან არანორმალური მდგომარეობის შემთხვევაში, სისტემა აგზავნის ხმოვან სიგნალს და რეალურ დროში შეტყობინებას.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3> მანუალური ჩაკეტვა</h3>
+                    <p>მანუალური კონტროლის მხარდაჭერა</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/>
+                            <line x1="16" y1="8" x2="2" y2="22"/>
+                            <line x1="17.5" y1="15" x2="9" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>LED ინდიკატორი</h3>
+                    <p>მწვანე/წითელი LED-ის საშუალებით რეალურ დროში ვიზუალურად გააკონტროლეთ კარის მდგომარეობა</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                        </svg>
+                    </div>
+                    <h3>ყველა რესურსები</h3>
+                    <p>ყველა კოდი, სქემები და დოკუმენტები ღია კოდის რეჟიმში გამოქვეყნებულია GitHub-ზე </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">სისტემის არქიტექტურა</span>
+                <h2 class="section-title">ფუნქციური არქიტექტურა</h2>
+                <p class="section-description">
+                   SDMS-ს აქვს მოდულური და ფენოვანი არქიტექტურული სტრუქტურა.
+                </p>
+            </div>
+
+            <div class="architecture-grid">
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <span class="layer-number">01</span>
+                        <h3>მომხმარებლის ინტერფეისი</h3>
+                    </div>
+                    <div class="layer-content">
+                        <div class="layer-item">
+                            <span class="item-icon">📱</span>
+                            <div>
+                                <h4>Blynk მობილური აპლიკაცია</h4>
+                                <p>დისტანციური კონტროლი, მონიტორინგი, შეტყობინებები</p>
+                            </div>
+                        </div>
+                        <div class="layer-item">
+                            <span class="item-icon">🔘</span>
+                            <div>
+                                <h4>ფიზიკური ღილაკი</h4>
+                                <p>მანუალური კონტროლი, საგანგებო სიტუაციები</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <span class="layer-number">02</span>
+                        <h3>კონტროლის ბირთვი</h3>
+                    </div>
+                    <div class="layer-content">
+                        <div class="layer-item">
+                            <span class="item-icon">🧠</span>
+                            <div>
+                                <h4>ESP32 მიკროკონტროლერი</h4>
+                                <p>ცენტრალური პროცესორი, ლოგიკური კონტროლი, კომუნიკაცია</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <span class="layer-number">03</span>
+                        <h3>მექანიზმები</h3>
+                    </div>
+                    <div class="layer-content">
+                        <div class="layer-item">
+                            <span class="item-icon">🔧</span>
+                            <div>
+                                <h4>სერვო ძრავა</h4>
+                                <p> საკეტის მართვის მექანიზმი: ჩაკეტვა/გაღება </p>
+                            </div>
+                        </div>
+                        <div class="layer-item">
+                            <span class="item-icon">💡</span>
+                            <div>
+                                <h4>LED ინდიკატორები</h4>
+                                <p> აჩვენებს კარის სტატუსს ვიზუალურად: მწვანე LED – კარი ღიაა, წითელი LED – კარი დაკეტილია </p>
+                            </div>
+                        </div>
+                        <div class="layer-item">
+                            <span class="item-icon">🔊</span>
+                            <div>
+                                <h4>Buzzer</h4>
+                                <p> გაფრთხილება: ხმოვანი სიგნალი </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <span class="layer-number">04</span>
+                        <h3>სენსორები</h3>
+                    </div>
+                    <div class="layer-content">
+                        <div class="layer-item">
+                            <span class="item-icon">🧲</span>
+                            <div>
+                                <h4>Reed სენსორი</h4>
+                                <p>აფიქსირებს კარის მდგომარეობას, არის თუ არა კარი ღია ან დახურული,</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-layer">
+                    <div class="layer-header">
+                        <span class="layer-number">05</span>
+                        <h3>ქსელისა და ღრუბლის ფენა</h3>
+                    </div>
+                    <div class="layer-content">
+                        <div class="layer-item">
+                            <span class="item-icon">📡</span>
+                            <div>
+                                <h4>Wi-Fi კავშირი</h4>
+                                <p>ადგილობრივი ქსელის კომუნიკაცია</p>
+                            </div>
+                        </div>
+                        <div class="layer-item">
+                            <span class="item-icon">☁️</span>
+                            <div>
+                                <h4>Blynk Cloud Server</h4>
+                                <p>მონაცემთა დამუშავება და სინქრონიზაცია</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagrams Section -->
+    <section id="diagrams" class="diagrams">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">ნახაზები</span>
+                <h2 class="section-title">დიაგარამები და სქემები</h2>
+                <p class="section-description">
+                   სისტემის დიზაინი, ელექტრო სქემები და PCB დიაგრამები
+                </p>
+            </div>
+
+            <div class="diagram-tabs">
+                <button class="tab-btn active" data-tab="3d">მოწყობილობის 3D დიზაინი</button>
+                <button class="tab-btn" data-tab="device">მოწყობილობის დიაგრამა</button>
+                <button class="tab-btn" data-tab="electrical">ელექტრული დიაგრამა</button>
+                <button class="tab-btn" data-tab="circuit">ელექტრული წრის სქემა</button>
+                <button class="tab-btn" data-tab="pcb">PCB დიაგრამა</button>
+                <button class="tab-btn" data-tab="functional">ფუნქციური და სტრუქტურული დიაგრამა</button>
+            </div>
+
+            <div class="diagram-content">
+                <div class="diagram-panel active" id="3d">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_2.png" alt="3D Tasarım">
+                        <div class="diagram-caption">მოწყობილობის 3D დიზაინი</div>
+                    </div>
+                </div>
+
+                <div class="diagram-panel" id="device">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_3.png" alt="Cihaz Diyagramı">
+                        <div class="diagram-caption">მოწყობილობის დიაგრამა</div>
+                    </div>
+                </div>
+
+                <div class="diagram-panel" id="electrical">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_4.png" alt="Elektrik Diyagramı">
+                        <div class="diagram-caption">ელექტრული დიაგრამა</div>
+                    </div>
+                </div>
+
+                <div class="diagram-panel" id="circuit">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_5.png" alt="Devre Şeması">
+                        <div class="diagram-caption">ელექტრული წრის სქემა</div>
+                    </div>
+                </div>
+
+                <div class="diagram-panel" id="pcb">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_6.png" alt="PCB Diyagram">
+                        <div class="diagram-caption">PCB დიაგრამა</div>
+                    </div>
+                </div>
+
+                <div class="diagram-panel" id="functional">
+                    <div class="diagram-image">
+                        <img src="images/sdms_image_7.png" alt="Fonksiyonel Diyagram">
+                        <div class="diagram-caption">ფუნქციური და სტრუქტურული დიაგრამა</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Section -->
+    <section id="components" class="components">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">კომპონენტები</span>
+                <h2 class="section-title">სისტემის კომპონენტები</h2>
+                <p class="section-description">
+                    SDMS სისტემაში გამოყენებული აპარატურის კომპონენტები და ტექნიკური მახასიათებლები
+                </p>
+            </div>
+
+            <div class="components-grid">
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_9.png" alt="ESP32">
+                    </div>
+                    <div class="component-content">
+                        <h3>ESP32 Dev Board</h3>
+                        <p class="component-description">ძლიერი მიკროკონტროლერი Wi-Fi და Bluetooth მხარდაჭერით</p>
+                        <ul class="component-specs">
+                            <li><strong>პროცესორი:</strong> Dual-core 240MHz</li>
+                            <li><strong>მეხსიერება:</strong> 520KB RAM</li>
+                            <li><strong>კავშირი:</strong> Wi-Fi 802.11 b/g/n, Bluetooth</li>
+                            <li><strong>ფასი:</strong> 24.40 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_10.png" alt="Servo Motor">
+                    </div>
+                    <div class="component-content">
+                        <h3>სერვო ძრავა - Tower Pro MG995R</h3>
+                        <p class="component-description">მაღალი ტორკის სერვო ძრავა, საკეტის მექანიზმისთვის</p>
+                        <ul class="component-specs">
+                            <li><strong>ტორკი:</strong> 9.4-11 kg/cm</li>
+                            <li><strong>ძაბვა:</strong> 4.8V - 7.2V</li>
+                            <li><strong>კუთხე:</strong> 0° - 180°</li>
+                            <li><strong>ფასი:</strong> 16.00 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_11.png" alt="Reed Sensor">
+                    </div>
+                    <div class="component-content">
+                        <h3>Reed სენსორი</h3>
+                        <p class="component-description">მაგნიტური სენსორი,კარის მდგომარეობის ამოცნობა</p>
+                        <ul class="component-specs">
+                            <li><strong>ტიპი:</strong> მაგნიტური სენსორი</li>
+                            <li><strong>სამუშაო:</strong> პასიური</li>
+                            <li><strong>სანდოობა:</strong> მაღალი</li>
+                            <li><strong>ფასი:</strong> 2.94 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_13.png" alt="LED">
+                    </div>
+                    <div class="component-content">
+                        <h3>LED ინდიკატორები</h3>
+                        <p class="component-description">მწვანე და წითელი LED, ვიზუალური მდგომარეობის ინდიკატორი</p>
+                        <ul class="component-specs">
+                            <li><strong>მწვანე LED:</strong> კარი ღია</li>
+                            <li><strong>წითელი LED:</strong> კარი დაკეტილი</li>
+                            <li><strong>ზომა:</strong> 3mm</li>
+                            <li><strong>ფასი:</strong> 0.40 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_12.png" alt="Buzzer">
+                    </div>
+                    <div class="component-content">
+                        <h3>Buzzer</h3>
+                        <p class="component-description">აქტიური buzzer, ხმოვანი გაფრთხილების სისტემა</p>
+                        <ul class="component-specs">
+                            <li><strong>ტიპი:</strong>აქტიური Buzzer</li>
+                            <li><strong>ხმა:</strong> პროგრამირებადი</li>
+                            <li><strong>ძაბვა:</strong> 3.3V - 5V</li>
+                            <li><strong>ფასი:</strong> 4.20 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_15.png" alt="Button">
+                    </div>
+                    <div class="component-content">
+                        <h3>ღილაკი</h3>
+                        <p class="component-description">ფიზიკური ღილაკი, მანუალური კონტროლი</p>
+                        <ul class="component-specs">
+                            <li><strong>ტიპი:</strong> Tact Switch</li>
+                            <li><strong>დაჭერა:</strong>მოკლე/კრძელი</li>
+                            <li><strong>ფუნქცია:</strong> ჩართვა/გამორთვა, საკეტის გაღება/ჩაკეტვა</li>
+                            <li><strong>ფასი:</strong> 2.26 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_14.png" alt="Resistor">
+                    </div>
+                    <div class="component-content">
+                        <h3>რეზისტორი</h3>
+                        <p class="component-description"> LED-ის დაცვა</p>
+                        <ul class="component-specs">
+                            <li><strong>მნიშვნელობა:</strong> 220Ω - 1kΩ</li>
+                            <li><strong>ძალა:</strong> 1/4W</li>
+                            <li><strong>ტოლერანტობა:</strong> ±5%</li>
+                            <li><strong>ფასი:</strong> 0.50 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src="images/sdms_image_16.png" alt="Jumper Cables">
+                    </div>
+                    <div class="component-content">
+                        <h3>Jumper კაბელები</h3>
+                        <p class="component-description">კაბელები:</p>
+                        <ul class="component-specs">
+                            <li><strong>ტიპი:</strong> Male-Male, Male-Female </li>
+                            <li><strong>სიგრძე:</strong> 10-30cm</li>
+                            <li><strong>რაოდენობა:</strong> 20 - 40 </li>
+                            <li><strong>ფასი:</strong> 11.61 GEL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="budget-section">
+                <h3>💰 პროექტის ბიუჯეტი</h3>
+                <div class="budget-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>კომპონენტი</th>
+                                <th>რაოდენობა</th>
+                                <th>ერთეული ფასი</th>
+                                <th>ჯამი</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ESP32 </td>
+                                <td>1</td>
+                                <td>24.40 GEL</td>
+                                <td>24.40 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>Servo MG995R </td>
+                                <td>1</td>
+                                <td>16.00 GEL</td>
+                                <td>16.00 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>Reed სენსორი</td>
+                                <td>1</td>
+                                <td>2.94 GEL</td>
+                                <td>2.94 GEL</td>
+                            </tr>
+                            <tr>
+                                <td> ღილაკი </td>
+                                <td>1</td>
+                                <td>2.26 GEL</td>
+                                <td>2.26 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>LED - ები</td>
+                                <td>2</td>
+                                <td>0.20 GEL</td>
+                                <td>0.40 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>Buzzer</td>
+                                <td>1</td>
+                                <td>4.20 GEL</td>
+                                <td>4.20 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>რეზისტორი</td>
+                                <td>2</td>
+                                <td>0.25 GEL</td>
+                                <td>0.50 GEL</td>
+                            </tr>
+                            <tr>
+                                <td>Jumper კაბელი</td>
+                                <td>1 Set</td>
+                                <td>11.61 GEL</td>
+                                <td>11.61 GEL</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><strong>ჯამი</strong></td>
+                                <td><strong>62.31 GEL</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">გუნდი</span>
+                <h2 class="section-title">პროექტის გუნდი</h2>
+                <p class="section-description">
+                    ილიას სახელმწიფო უნივერსიტეტის კომპიუტერული ინჟინერიის სტუდენტები და ხელმძღვანელები
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">VS</div>
+                    </div>
+                    <h3>ვუგარ სამედოვი</h3>
+                    <p class="team-role">სტუდენტი - აპარატურისა & სისტემის ინტეგრაცია</p>
+                    <div class="team-responsibilities">
+                        <span class="tag">კომპონენტის მიერთება</span>
+                        <span class="tag">სისტემის აწყობა</span>
+                        <span class="tag">ტესტირება</span>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">ეხ</div>
+                    </div>
+                    <h3>ელჯუნ ხასიევი</h3>
+                    <p class="team-role">სტუდენტი - პროგრამული უზრუნველყოფა & აპლიკაციების განვითარება</p>
+                    <div class="team-responsibilities">
+                        <span class="tag">ESP32 - ის პროგრამირება</span>
+                        <span class="tag">Blynk აპლიკაციის პროგრამირება</span>
+                        <span class="tag">ოპტიმიზაცია</span>
+                    </div>
+                </div>
+
+                <div class="team-card advisor">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">დჩ</div>
+                    </div>
+                    <h3>დავით ჩხაიძე</h3>
+                    <p class="team-role"></p>
+                    <div class="team-responsibilities">
+                        <span class="tag">კურსის ხელმძღვანელი</span>
+                    </div>
+                </div>
+
+                <div class="team-card advisor">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">გმ</div>
+                    </div>
+                    <h3>გიორგი მოდებაძე</h3>
+                    <p class="team-role"></p>
+                    <div class="team-responsibilities">
+                        <span class="tag">კურსის ხელმძღვანელი</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="university-info">
+                <div class="university-logo">
+                    <img src="images/sdms_image_1.jpeg" alt="Ilia State University">
+                </div>
+                <div class="university-text">
+                    <h4>ილიას სახელმწიფო უნივერსიტეტი</h4>
+                    <p>ბიზნესის, ტექნოლოგიებისა და განათლების ფაკულტეტი</p>
+                    <p>ტექნოლოგიური სკოლა - კომპიუტერული ინჟინერიის საბაკალავრო პროგრამა</p>
+                    <p>დამამთავრებელი კურსის დიზაინის პროექტი A | თბილისი, საქართველო | 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="github-section">
+        <div class="container">
+            <div class="github-card">
+                <div class="github-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                </div>
+                <h2>პროექტის ყველა რესურსები</h2>
+                <p>ყველა კოდი, სქემები, დოკუმენტები და რესურსები ხელმისაწვდომია GitHub-ზე</p>
+                <div class="github-stats">
+                    <div class="stat">
+                        <strong>Repository:</strong>
+                        <span>SDMS-Smart-Door-Management-System</span>
+                    </div>
+                    <div class="stat">
+                        <strong>License:</strong>
+                        <span>MIT License</span>
+                    </div>
+                </div>
+                <a href="https://github.com/vugarsamedovi1-ux/SDMS-Smart-Door-Management-System" target="_blank" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                    </svg>
+                   გაათვალიერე GitHub-ზე
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SDMS პროექტი</h3>
+                    <p>Smart Door Management System - ჭკვიანი კარის მართვა და უსაფრთხოებისათვის IoT გადაწყვეტილება</p>
+                </div>
+                <div class="footer-section">
+                    <h3>კავშირები</h3>
+                    <ul>
+                        <li><a href="#home">მთავარი გვერდი</a></li>
+                        <li><a href="#features">ფუნციები</a></li>
+                        <li><a href="#diagrams">ნახაზები</a></li>
+                        <li><a href="#team">გუნდი</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>რესურსები</h3>
+                    <ul>
+                        <li><a href="https://github.com/vugarsamedovi1-ux/SDMS-Smart-Door-Management-System" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://docs.blynk.io/" target="_blank">Blynk დოკუმენტაცია</a></li>
+                        <li><a href="https://docs.espressif.com/" target="_blank">ESP32 დოკუმენტაცია</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>კომუნიკაცია</h3>
+                    <p>ილიას სახელმწიფო უნივერსიტეტი<br>
+                    დამამთავრებელი კურსის დიზაინის პროექტი A<br>
+                    თბილისი, საქართველოp>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SDMS პროექტი. ყველა უფლება დაცულია. | MIT ლიცენზია</p>
+                <p>ვუგარ სამედოვი & ელჯუნ ხასიევი</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
