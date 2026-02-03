@@ -23,7 +23,7 @@
   * ელჯუნ ხასიევი (პროგრამული უზრუნველყოფა & აპლიკაციების განვითარება)
 * **კონსულტანტები:**
 
-  * დავით ჭყაიძე
+  * დავით ჩხაიძე
   * გიორგი მოდებაძე
 
 ## 🌟 მახასიათებლები
@@ -99,79 +99,6 @@
 5. **PCB დიაგრამა** - ბეჭდური წრის დიზაინი
 6. **ფუნქციური დიაგრამა** - სისტემის ფლოუ
 
-ყველა დიაგრამა მაღალი გარჩევადობით არის `images/` ფოლდერში.
-
-## 💻 ინსტალაცია
-
-### მოთხოვნები
-
-* Arduino IDE (1.8.x ან ახალი)
-* ESP32 დაფის მხარდაჭერა
-* Blynk ბიბლიოთეკა
-* Wi-Fi კავშირი
-
-### ნაბიჯები
-
-1. **Repository-ის კლონირება**
-
-```bash
-git clone https://github.com/vugarsamedovi1-ux/SDMS-Smart-Door-Management-System.git
-cd SDMS-Smart-Door-Management-System
-```
-
-2. **Arduino IDE დაყენება**
-
-* Arduino IDE გახსენით
-* Preferences > Additional Board Manager URLs-ში დაამატეთ:
-
-  ```
-  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-  ```
-* Tools > Board > Boards Manager > ESP32 მოძებნეთ და დაყენება
-
-3. **ბიბლიოთეკების დაყენება**
-
-* Sketch > Include Library > Manage Libraries
-* მოძებნეთ "Blynk" და დააინსტალირეთ
-* მოძებნეთ "ESP32Servo" და დააინსტალირეთ
-
-4. **კოდის ატვირთვა ESP32-ზე**
-
-* გახსენით `sdms-code.ino` Arduino IDE-ში
-* განაახლეთ Wi-Fi მონაცემები და Blynk Auth Token
-* Board: "ESP32 Dev Module"
-* Upload ღილაკზე დააჭირეთ
-
-5. **Blynk აპლიკაციის კონფიგურაცია**
-
-* Blynk აპლიკაცია დაიწერეთ (iOS/Android)
-* შექმენით ახალი პროექტი
-* დაამატეთ Widget-ები (დეტალები დოკუმენტაციაში)
-
-## 🌐 ვებსაიტი
-
-პროექტის ვებსაიტი თანამედროვე, responsive და ერთგვერდიანი დიზაინითაა.
-
-### ინსტალაცია
-
-1. კოპირება `web/` ფოლდერი ვებსერვერზე
-2. გახსენით `index.html` ბრაუზერში
-
-### მახასიათებლები
-
-* 📱 სრული responsive დიზაინი
-* 🎨 თანამედროვე gradient და ანიმაციები
-* 🖼️ მაღალი გარჩევადობის პროექტის გამოსახულებები
-* 📊 ინტერაქტიული დიაგრამების ჩვენება
-* 👥 გუნდის პრეზენტაცია
-* 💰 დეტალური ბიუჯეტის ცხრილი
-
-### ტექნოლოგიები
-
-* HTML5
-* CSS3 (Modern gradients, flexbox, grid)
-* Vanilla JavaScript (ES6+)
-* Google Fonts (Inter)
 
 ## 🔒 უსაფრთხოება
 
