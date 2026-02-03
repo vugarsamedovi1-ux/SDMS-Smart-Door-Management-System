@@ -15,6 +15,8 @@
 * **წელი:** 2026
 * **ქალაქი:** თბილისი, საქართველო
 
+* Web - Github Link: https://github.com/vugarsamedovi1-ux/smartdoorlock 
+
 ### 👥 პროექტის გუნდი
 
 * **სტუდენტები:**
