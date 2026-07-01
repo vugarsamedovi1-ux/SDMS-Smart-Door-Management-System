@@ -284,16 +284,17 @@ Repository შეიცავს:
 
 **ვუგარ სამედოვი**
 
+- Embedded Software
+- ESP32 Development
+- IoT Programming
+
+
+**ელჯუნ ხასიევი**
+
 - Hardware Design
 - PCB Design
 - Mechanical Design
 - System Integration
-
-**ელჯუნ ხასიევი**
-
-- Embedded Software
-- ESP32 Development
-- IoT Programming
 
 ---
 
